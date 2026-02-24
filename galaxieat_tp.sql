@@ -66,7 +66,8 @@ INSERT INTO Restaurants (restaurant_id, name, planet, sector, opened_date) VALUE
 (1, 'GalaxiEat Terra', 'Earth', 'North', '2024-01-12'),
 (2, 'GalaxiEat Mars', 'Mars', 'Dome-7', '2024-03-20'),
 (3, 'GalaxiEat Venus', 'Venus', 'Cloud-3', '2025-02-11'),
-(4, 'GalaxiEat Titan', 'Titan', 'Port-2', '2025-06-01');
+(4, 'GalaxiEat Titan', 'Titan', 'Port-2', '2025-06-01'),
+(5, 'GalaxiEat Mercury', 'Mercure', 'Orbit-1', '2026-01-10');
 
 INSERT INTO Employees (employee_id, restaurant_id, full_name, role, salary, hire_date) VALUES
 (1, 1, 'Lina Aster', 'Manager', 3200, '2024-02-01'),
@@ -90,7 +91,8 @@ INSERT INTO CustomerOrders (order_id, restaurant_id, customer_name, customer_pla
 (1, 1, 'Ben K', 'Earth', '2026-02-20', 22.40),
 (2, 2, 'Aya L', 'Mars', '2026-02-21', 4.50),
 (3, 3, 'Rex T', 'Venus', '2026-02-22', 18.60),
-(4, 4, 'Moe P', 'Titan', '2026-02-23', 13.10);
+(4, 4, 'Moe P', 'Titan', '2026-02-23', 13.10),
+(5, 5, 'Van A', 'Mercure', '2026-02-14', 16.75);
 
 INSERT INTO OrderItems (order_item_id, order_id, dish_id, quantity, unit_price) VALUES
 (1, 1, 1, 1, 13.90),
