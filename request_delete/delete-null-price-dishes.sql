@@ -1,0 +1,2 @@
+DELETE FROM Dishes
+WHERE price IS NULL;
