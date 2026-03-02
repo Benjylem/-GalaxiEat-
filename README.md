@@ -14,7 +14,7 @@ sqlite3 galaxieat.db < galaxieat_tp.sql
 Si `sqlite3` n'est pas installé sur ta machine, tu peux tester avec Python (module `sqlite3` intégré) :
 
 ```bash
-/home/benjamin/Documents/ynov/projectSchool/sqldocker/.venv/bin/python - <<'PY'
+/.venv/bin/python - <<'PY'
 import sqlite3, pathlib
 sql = pathlib.Path('galaxieat_tp.sql').read_text(encoding='utf-8')
 conn = sqlite3.connect('galaxieat.db')

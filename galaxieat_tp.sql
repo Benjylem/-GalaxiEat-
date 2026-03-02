@@ -152,14 +152,14 @@ INSERT INTO OrderItems (order_item_id, order_id, dish_id, quantity, unit_price) 
 
 
 -- =====================================================
--- 1) PARTIE SIMPLE
---    D. Requêtes simples (SELECT / WHERE / ORDER BY / DELETE)
+-- 1: PARTIE SIMPLE
+--    avec (SELECT / WHERE / ORDER BY / DELETE)
 -- =====================================================
 
 -- 1. Lister tous les restaurants
 SELECT * FROM Restaurants;
 
--- 2. Lister les plats triés par prix (du moins cher au plus cher)
+-- 2. Lister tous les plats triés par prix (du moins chere au plus chere)
 SELECT dish_name, price
 FROM Dishes
 ORDER BY price DESC;
@@ -179,12 +179,12 @@ SELECT *
 FROM Dishes
 WHERE price IS NULL;
 
--- 5bis. Trouver les plats où is_vegan est NULL
+-- 5.2. Trouver les plats où is_vegan est NULL
 SELECT *
 FROM Dishes
 WHERE is_vegan IS NULL;
 
--- 5ter. Trouver les employés où hire_date est NULL
+-- 5.3. Trouver les employés où hire_date est NULL
 SELECT *
 FROM Employees
 WHERE hire_date IS NULL;
@@ -314,6 +314,9 @@ SET price = CASE
     ELSE ROUND(price * 0.95, 2)
 END
 WHERE price IS NOT NULL;
+
+-- N'oublié pas de recrée la base depuis zéro en cliquant sur "Nouvelle base de données", puis exécute tout le fichier d'un coup avec Ctrl+A → Exécuter. 
+-- Comme ça les INSERT remettent les prix originaux et l'UPDATE s'applique une seule fois proprement.
 
 
 -- -----------------------------------------------------
