@@ -1,6 +1,6 @@
---PRAGMA foreign_keys = ON; (inutile pour le moment)
+PRAGMA foreign_keys = ON;
 
--- On fait des reset pour 0 conflic (j'espere)
+-- Reset
 DROP TABLE IF EXISTS OrderItems;
 DROP TABLE IF EXISTS CustomerOrders;
 DROP TABLE IF EXISTS Orders;
@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Dishes;
 DROP TABLE IF EXISTS Employees;
 DROP TABLE IF EXISTS Restaurants;
 
---création des tables(pour le moment c'est des provisoires)
+-- Tables
 CREATE TABLE Restaurants (
     restaurant_id INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE Dishes (
     FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id)
 );
 
--- On crée Orders puis on la renomme 
+-- Orders puis renommage
 CREATE TABLE Orders (
     order_id INTEGER PRIMARY KEY,
     restaurant_id INTEGER NOT NULL,
@@ -46,22 +46,24 @@ CREATE TABLE Orders (
     FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id)
 );
 
+ALTER TABLE Orders RENAME TO CustomerOrders;
+
+-- Maintenant seulement : OrderItems (référence CustomerOrders)
 CREATE TABLE OrderItems (
     order_item_id INTEGER PRIMARY KEY,
     order_id INTEGER NOT NULL,
     dish_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL CHECK(quantity > 0),
     unit_price REAL NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (order_id) REFERENCES CustomerOrders(order_id),
     FOREIGN KEY (dish_id) REFERENCES Dishes(dish_id)
 );
 
--- Modif la struct (alter table)
+-- Alter table
 ALTER TABLE Employees ADD COLUMN hire_date TEXT;
 ALTER TABLE Dishes ADD COLUMN is_vegan INTEGER; -- 0 = non, 1 = oui
-ALTER TABLE Orders RENAME TO CustomerOrders;
 
--- Insertion de données
+-- Inserts
 INSERT INTO Restaurants (restaurant_id, name, planet, sector, opened_date) VALUES
 (1, 'GalaxiEat Terra', 'Earth', 'North', '2024-01-12'),
 (2, 'GalaxiEat Mars', 'Mars', 'Dome-7', '2024-03-20'),
@@ -101,4 +103,4 @@ INSERT INTO OrderItems (order_item_id, order_id, dish_id, quantity, unit_price) 
 (4, 3, 5, 1, 12.40),
 (5, 3, 8, 1, 6.20),
 (6, 4, 3, 1, 11.20),
-(7, 4, 4, 1, 1.90);
+(7, 4, 4, 1, 6.90);
